@@ -1,4 +1,4 @@
-import {UPDATE_USER, UPDATE_CONTACT} from './actions'
+import {UPDATE_USER, UPDATE_CONTACT} from '../actions'
 
 const merge = (prev, next) => Object.assign({}, prev, next)
 

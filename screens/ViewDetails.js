@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Button, View, StyleSheet} from 'react-native';
+import {Button, View, Text, StyleSheet} from 'react-native';
 
 export default class ViewDetails extends Component {
-    static navigationOptions = {
-        headerTitle: 'Contact Details',
+    static navigationOptions = ({ navigation }) => ({
+        headerTitle: navigation.getParam('name'),
         headerTintColor: 'grey',
-    }
+    })
     constructor(props) {
         super(props)
         this.state = {
@@ -17,9 +17,9 @@ export default class ViewDetails extends Component {
     }
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View>
+                <Text>{this.props.navigation.getParam('phone')}</Text>
                 <View style={styles.button}>
-                    <Button onPress={this.multiply} title={"" + this.state.count}/>
                     <Button title={"Go back"} onPress={() => this.props.navigation.goBack()} />
                 </View>
             </View>

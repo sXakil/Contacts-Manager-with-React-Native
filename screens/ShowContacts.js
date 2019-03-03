@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button, View, StyleSheet} from 'react-native';
-import FlatListContacts from '../components/ContactList'
-
-export default class NewContact extends Component {
+import SectionListContacts from '../components/ContactList'
+import {connect} from 'react-redux'
+class ContactListScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             headerTitle: 'Contact List',
@@ -19,19 +19,16 @@ export default class NewContact extends Component {
             headerStyle: { backgroundColor: '#fdfdfd' },
         }
     }
-    constructor(props) {
-        super(props)
-        this.state = {
-            count: 0,
-        }
-    }
-    increment = () => {
-        this.setState({count: this.state.count + 1,})
-    }
     render() {
         return (
             <View>
-                <FlatListContacts contacts={this.props.screenProps.contacts}/>
+                <SectionListContacts 
+                    contacts={this.props.contacts}
+                    onContactSelected={contact => this.props.navigation.navigate('ViewDetails', {
+                        phone: contact.phone,
+                        name: contact.name,
+                    })}
+                />
             </View>
         )
     }
@@ -48,3 +45,9 @@ const styles = StyleSheet.create({
         alignItems: 'stretch',
     }
 })
+
+const mapStateToProps = state => ({
+    contacts: state.contacts,
+  })
+  
+export default connect(mapStateToProps)(ContactListScreen)
