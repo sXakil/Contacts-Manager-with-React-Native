@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, View, StyleSheet} from 'react-native';
 
-export default class EditContact extends Component {
+export default class EditContactScreen extends Component {
     static navigationOptions = {
         headerTitle: 'Edit Contact',
         headerTintColor: 'grey',

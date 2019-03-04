@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button, View, Text, StyleSheet} from 'react-native';
 
-export default class ViewDetails extends Component {
+export default class ViewDetailsScreen extends Component {
     static navigationOptions = ({ navigation }) => ({
         headerTitle: navigation.getParam('name'),
         headerTintColor: 'grey',

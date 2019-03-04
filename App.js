@@ -1,7 +1,6 @@
 import React, {
 	Component
 } from 'react'
-import {Button} from 'react-native'
 import {
 	createAppContainer,
 	createStackNavigator,
@@ -10,20 +9,20 @@ import {
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Provider} from 'react-redux'
 import store from './store'
-import ShowContacts from './screens/ShowContacts'
-import AddContact from './screens/AddNewContact'
-import EditContact from './screens/EditContact'
-import ViewDetails from './screens/ViewDetails'
-import Settings from'./screens/Settings'
+import ContactsListScreen from './screens/ContactsListScreen'
+import AddContactScreen from './screens/AddContactScreen'
+import EditContactScreen from './screens/EditContactScreen'
+import ViewDetailsScreen from './screens/ViewDetailsScreen'
+import SettingsScreen from'./screens/SettingsScreen'
 import contacts from './ContactsGenerator'
 
 const MainStack = createStackNavigator({
-	ShowContacts,
-	AddContact,
-	EditContact,
-	ViewDetails,
+	ContactsListScreen,
+	AddContactScreen,
+	EditContactScreen,
+	ViewDetailsScreen,
 }, {
-	initialRouteName: 'ShowContacts'
+	initialRouteName: 'ContactsListScreen'
 })
 
 MainStack.navigationOptions = {
@@ -36,7 +35,7 @@ MainStack.navigationOptions = {
   }
 const MainTabs = createBottomTabNavigator({
 	  	Contacts: MainStack,
-	  	Settings,
+	  	SettingsScreen,
 	}, 
 	{
 		tabBarOptions: {
