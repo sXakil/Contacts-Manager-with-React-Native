@@ -1,13 +1,14 @@
 import {createStore} from 'redux'
-import {addContact} from './actions'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import reducers from './reducers'
 
-const store = createStore(reducers)
+const persistConfig = {
+    key: 'root',
+    storage,
+  }
 
-/* seed initial data */
-store.dispatch(addContact({name: 'Shakil Ahmed', phone: '5446521956',}))
-store.dispatch(addContact({name: 'Jordan Hayashi', phone: '5328315496',}))
-store.dispatch(addContact({name: 'David Cameroon', phone: '5050505050',}))
-console.log(store.getState())
+const persistedReducer = persistReducer(persistConfig, reducers)
 
-export default store
+export const store = createStore(persistedReducer)
+export let persistor = persistStore(store)
