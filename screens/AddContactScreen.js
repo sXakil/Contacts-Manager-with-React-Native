@@ -73,7 +73,7 @@ class AddContactScreen extends React.Component {
         name: this.state.name, 
         phone: this.state.phone,
     })
-    this.props.navigation.navigate('ShowContacts');
+    this.props.navigation.navigate('ContactsListScreen');
   };
 
   render() {

@@ -10,7 +10,7 @@ class ContactListScreen extends Component {
             headerRight: (
                 <View style={{paddingEnd: 10}}>
                     <Button
-                    onPress={() => navigation.navigate('AddContact')}
+                    onPress={() => navigation.navigate('AddContactScreen')}
                     title="+Add"
                     color="teal"
                     />
@@ -24,7 +24,7 @@ class ContactListScreen extends Component {
             <View>
                 <SectionListContacts 
                     contacts={this.props.contacts}
-                    onContactSelected={contact => this.props.navigation.navigate('ViewDetails', {
+                    onContactSelected={contact => this.props.navigation.navigate('ViewDetailsScreen', {
                         phone: contact.phone,
                         name: contact.name,
                     })}

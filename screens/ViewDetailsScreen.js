@@ -12,15 +12,16 @@ export default class ViewDetailsScreen extends Component {
             count: 1,
         }
     }
-    multiply = () => {
-        this.setState({count: this.state.count * 2,})
+    handleDelete(key) {
+        this.props.deleteThis(key)
     }
     render() {
         return (
             <View>
                 <Text>{this.props.navigation.getParam('phone')}</Text>
                 <View style={styles.button}>
-                    <Button title={"Go back"} onPress={() => this.props.navigation.goBack()} />
+                    <Button title="Go back" onPress={() => this.props.navigation.goBack()} />
+                    
                 </View>
             </View>
         )
