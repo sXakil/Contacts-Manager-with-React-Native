@@ -8,7 +8,10 @@ import {
 } from 'react-navigation'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Provider} from 'react-redux'
-import store from './store'
+
+import {PersistGate} from 'redux-persist/integration/react'
+import {store, persistor} from './store'
+
 import ContactsListScreen from './screens/ContactsListScreen'
 import AddContactScreen from './screens/AddContactScreen'
 import EditContactScreen from './screens/EditContactScreen'
@@ -42,7 +45,7 @@ const MainTabs = createBottomTabNavigator({
 		activeTintColor: '#a41034',
 	  },
 	}
-  )
+)
 const AppContainer = createAppContainer(MainTabs);
 
 export default class App extends Component {
@@ -59,10 +62,19 @@ export default class App extends Component {
 			contacts: [...prevState.contacts, newContact]
 		}));
 	};
+
+	deleteContact(key) {
+		this.setState(prevState => ({
+			contacts: prevState.filter(contact => key !== contact.key)
+		}))
+	}
+
 	render() {
 		return (
 			<Provider store={store}>
-				<AppContainer />
+				<PersistGate loading={null} persistor={persistor}>
+					<AppContainer />
+				</PersistGate>
 			</Provider>
 		)
 	}
